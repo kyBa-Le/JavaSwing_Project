@@ -34,6 +34,8 @@ public class BMIView extends JFrame{
         chiSoBMI.setBounds(180,200,50,30);
         traKetLuan.setBounds(100,270,250,100);
         traKetLuan.setBackground(Color.LIGHT_GRAY);
+        traKetLuan.setWrapStyleWord(true);
+        traKetLuan.setLineWrap(true);
 
         tinhKetQua = new JButton("Tính toán");
         tinhKetQua.setBounds(250,120,100,40);

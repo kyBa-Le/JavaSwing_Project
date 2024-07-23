@@ -41,7 +41,11 @@ public class BMIController implements ActionListener{
         try{
             if(!view.getNhapChieuCao().getText().equals("")){
                 chieuCao = Float.parseFloat(view.getNhapChieuCao().getText());
-                isValid = true;
+                if(chieuCao<=0){
+                    JOptionPane.showMessageDialog(view, "Chiều cao phải lớn hơn 0!");
+                }else{
+                    isValid = true;
+                }
             }else{
                 JOptionPane.showMessageDialog(view, "Vui lòng nhập chiều cao!");
             }
@@ -56,9 +60,13 @@ public class BMIController implements ActionListener{
         try{
             if(!view.getNhapCanNang().getText().equals("")){
                 canNang = Float.parseFloat(view.getNhapCanNang().getText());
-                isValid = true;
+                if(canNang<=0){
+                    JOptionPane.showMessageDialog(view, "Cân nặng phải lớn hơn 0!");
+                }else{
+                    isValid = true;
+                }
             }else{
-                JOptionPane.showMessageDialog(view, "Vui lòng nhập chiều cao!");
+                JOptionPane.showMessageDialog(view, "Vui lòng nhập cân nặng!");
             }
             
         }catch(NumberFormatException e){
@@ -68,9 +76,9 @@ public class BMIController implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(validateCangNang()&&validateChieuCao()){
+        if(validateChieuCao()&&validateCangNang()){
             tinhBMI(chieuCao, canNang);
-            view.getChiSoBMI().setText(""+chiSoBMI);
+            view.getChiSoBMI().setText(String.format("%1.3f",chiSoBMI));
             view.getTraKetLuan().setText(ketLuan);
         }else{
             view.getChiSoBMI().setText("");
